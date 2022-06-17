@@ -27,10 +27,28 @@ eval "$(pyenv init -)"
 export PATH="$PATH:$HOME/windowsPath"
 
 # g++ alias
-function crun() {
+crun() {
     g++ -std=c++17 $1 -o $(basename $1 .cpp)
     ./$(basename $1 .cpp)
 }
+
+_crun(){
+    _files
+}
+
+compdef _crun crun
+
+start(){
+    cmd /c start $1 > /dev/null
+}
+
+_start(){
+    _files
+}
+
+compdef _start start
+
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

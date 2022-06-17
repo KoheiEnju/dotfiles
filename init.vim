@@ -40,19 +40,18 @@ else
 endif
 call plug#end()
 
-" only be activated in wsl
 let g:clipboard = {
-            \   'name': 'myClipboard',
-            \   'copy': {
-                \      '+': 'clip',
-                \      '*': 'clip',
-                \    },
-                \   'paste': {
-                    \      '+': 'clip',
-                    \      '*': 'clip',
-                    \   },
-                    \   'cache_enabled': 1,
-                    \ }
+    \   'name': 'myClipboard',
+    \   'copy': {
+    \      '+': 'win32yank -i',
+    \      '*': 'win32yank -i',
+    \    },
+    \   'paste': {
+    \      '+': 'win32yank -o',
+    \      '*': 'win32yank -o',
+    \   },
+    \   'cache_enabled': 1,
+    \ }
 
 " about clipbaord
 set clipboard=unnamed
