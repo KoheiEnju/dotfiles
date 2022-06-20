@@ -40,22 +40,20 @@ else
 endif
 call plug#end()
 
-" only be activated in wsl
-let g:clipboard = {
-            \   'name': 'myClipboard',
-            \   'copy': {
-                \      '+': 'clip',
-                \      '*': 'clip',
-                \    },
-                \   'paste': {
-                    \      '+': 'clip',
-                    \      '*': 'clip',
-                    \   },
-                    \   'cache_enabled': 1,
-                    \ }
-
 " about clipbaord
 set clipboard=unnamed
+let g:clipboard = {
+    \   'name': 'myClipboard',
+    \   'copy': {
+    \      '+': 'win32yank.exe -i',
+    \      '*': 'win32yank.exe -i',
+    \    },
+    \   'paste': {
+    \      '+': 'win32yank.exe -o',
+    \      '*': 'win32yank.exe -o',
+    \   },
+    \   'cache_enabled': 1,
+    \ }
 
 if has("win64") || has("win32")
     " shell
@@ -89,6 +87,7 @@ if !exists('g:vscode')
     highlight NonText ctermbg=NONE guibg=NONE
     highlight Folded ctermbg=NONE guibg=NONE
     highlight EndOfBuffer ctermbg=NONE guibg=NONE
+    autocmd BufWritePre <buffer> LspDocumentFormatSync
 endif
 
 
