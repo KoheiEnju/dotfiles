@@ -28,8 +28,27 @@ export PATH="$PATH:$HOME/windowsPath"
 
 # g++ alias
 function crun() {
-    g++ -std=c++17 $1 -o $(basename $1 .cpp)
-    ./$(basename $1 .cpp)
+    oldDir=".old"
+    basename=$(basename $1 .cpp)
+    if [ ! -e .old ]; then
+        echo "Making .old directory..."
+        mkdir $oldDir
+    fi
+    if [ ! -e .old/$1 ];then
+        echo "Compiling new file..."
+        cp $1 $oldDir/$1
+        g++ -std=c++17 $1 -o $basename
+    else
+        diff -q $1 $oldDir/$1 > /dev/null
+        if [ $? -eq 1 ];then
+            echo "Update detected.  Compiling..."
+            rm -f $oldDir/$1
+            cp $1 $oldDir/$1
+            g++ -std=c++17 $1 -o $basename
+        fi
+    fi
+    echo "Let's f**king go!"
+    ./$basename
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
