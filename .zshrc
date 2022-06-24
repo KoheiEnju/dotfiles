@@ -52,7 +52,7 @@ function crun() {
 }
 
 _crun(){
-    _files
+    _files -g "*.cpp"
 }
 
 compdef _crun crun
@@ -67,7 +67,12 @@ _start(){
 
 compdef _start start
 
-
+function select-history() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
+}
+zle -N select-history
+bindkey '^r' select-history
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
