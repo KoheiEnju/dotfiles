@@ -87,7 +87,6 @@ if !exists('g:vscode')
     highlight NonText ctermbg=NONE guibg=NONE
     highlight Folded ctermbg=NONE guibg=NONE
     highlight EndOfBuffer ctermbg=NONE guibg=NONE
-    autocmd BufWritePre <buffer> LspDocumentFormatSync
 endif
 
 
