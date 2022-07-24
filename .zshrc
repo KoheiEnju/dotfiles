@@ -74,5 +74,10 @@ function select-history() {
 zle -N select-history
 bindkey '^r' select-history
 
+# win32yank alias
+function clip(){
+    cat $1 | win32yank.exe -i
+}
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
