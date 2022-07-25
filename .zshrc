@@ -25,6 +25,7 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 export PATH="$PATH:$HOME/windowsPath"
+export PATH="$PATH:/home/kohei/.cargo/bin"
 
 # g++ alias
 function crun() {
@@ -81,3 +82,19 @@ function clip(){
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# default editor
+export EDITOR="/usr/bin/vim"
+
+# vi mode
+bindkey -v
+
+# Yank to the system clipboard
+function vi-yank-xclip {
+    zle vi-yank
+   echo "$CUTBUFFER" | win32yank -i
+}
+
+zle -N vi-yank-xclip
+bindkey -M vicmd 'y' vi-yank-xclip
+
