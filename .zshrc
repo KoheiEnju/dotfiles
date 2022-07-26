@@ -85,17 +85,4 @@ function clip(){
 
 # default editor
 export EDITOR="/usr/bin/vim"
-
-# vi mode
-bindkey -v
-
-# Yank to the system clipboard
-function vi-yank-xclip {
-    zle vi-yank
-   echo "$CUTBUFFER" | win32yank -i
-}
-
-zle -N vi-yank-xclip
-bindkey -M vicmd 'y' vi-yank-xclip
-
-unalias sl
+export MANPAGER="/bin/sh -c \"col -b -x|nvim -R -c 'set ft=man nolist nonu noma' -\""
