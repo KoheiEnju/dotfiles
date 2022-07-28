@@ -9,7 +9,7 @@ Plug 'tpope/vim-surround'
 
 if !exists('g:vscode')
     " neovim
-    "" extension
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }   "" extension
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'lambdalisue/fern.vim'

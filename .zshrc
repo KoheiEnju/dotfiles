@@ -25,6 +25,7 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 export PATH="$PATH:$HOME/windowsPath"
+export PATH="$PATH:/home/kohei/.cargo/bin"
 
 # g++ alias
 function crun() {
@@ -81,3 +82,7 @@ function clip(){
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# default editor
+export EDITOR="/usr/bin/vim"
+export MANPAGER="/bin/sh -c \"col -b -x|nvim -R -c 'set ft=man nolist nonu noma' -\""
