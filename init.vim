@@ -33,6 +33,7 @@ if !exists('g:vscode')
     Plug 'joshdick/onedark.vim'
     Plug 'itchyny/lightline.vim'
     Plug 'sonph/onehalf', {'rtp': 'vim'}
+    Plug 'markvincze/panda-vim'
     Plug 'ayu-theme/ayu-vim'
 else
     " for vscode-neovim 
@@ -70,7 +71,7 @@ if !exists('g:vscode')
     filetype plugin indent on
     syntax enable
     set termguicolors
-    colorscheme onedark
+    colorscheme molokai
     set number
     set showcmd
     set hls
@@ -87,6 +88,7 @@ if !exists('g:vscode')
     highlight NonText ctermbg=NONE guibg=NONE
     highlight Folded ctermbg=NONE guibg=NONE
     highlight EndOfBuffer ctermbg=NONE guibg=NONE
+    set mouse=
 endif
 
 
