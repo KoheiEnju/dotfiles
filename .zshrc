@@ -84,9 +84,11 @@ function clip(){
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # default editor
-export EDITOR="/usr/bin/vim"
+export EDITOR="/usr/local/bin/vim"
+
 export MANPAGER="/bin/sh -c \"col -b -x|nvim -R -c 'set ft=man nolist nonu noma' -\""
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="$PATH:/usr/local/go/bin"
