@@ -38,18 +38,18 @@ function crun() {
     if [ ! -e .old/$1 ];then
         echo "Compiling new file..."
         cp $1 $oldDir/$1
-        g++ -std=c++17 $1 -o $basename
+        g++ -std=c++17 $1 -o $oldDir/$basename
     else
         diff -q $1 $oldDir/$1 > /dev/null
         if [ $? -eq 1 ];then
             echo "Update detected.  Compiling..."
             rm -f $oldDir/$1
             cp $1 $oldDir/$1
-            g++ -std=c++17 $1 -o $basename
+            g++ -std=c++17 $1 -o $oldDir/$basename
         fi
     fi
     echo "Let's f**king go!"
-    ./$basename
+    ./$oldDir/$basename
 }
 
 _crun(){
