@@ -77,7 +77,7 @@ bindkey '^r' select-history
 
 # win32yank alias
 function clip(){
-    cat $1 | win32yank.exe -i
+    cat $1 | xsel -ib
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
