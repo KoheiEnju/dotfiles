@@ -88,3 +88,12 @@ export EDITOR="/usr/local/bin/vim"
 
 export MANPAGER="/bin/sh -c \"col -b -x|nvim -R -c 'set ft=man nolist nonu noma' -\""
 
+export PATH="$PATH:/home/enju/tmp/nvim/usr/bin"
+export PATH="$PATH:/home/enju/tmp/delta/usr/bin"
+export PATH="$PATH:/home/enju/tmp/bat/usr/bin"
+export PATH="$PATH:/home/enju/tmp/fd/usr/bin"
+export PATH="$PATH:/home/enju/tmp/fzf/usr/bin"
+export PATH="$PATH:/home/enju/tmp/exa/usr/bin"
+export PATH="$PATH:/home/enju/tmp/ripgrep/usr/bin"
+export PATH="$PATH:/home/enju/software/bin"
+export PATH="$PATH:/home/enju/software/xsel/usr/bin"
