@@ -38,18 +38,18 @@ function crun() {
     if [ ! -e .old/$1 ];then
         echo "Compiling new file..."
         cp $1 $oldDir/$1
-        g++ -std=c++17 $1 -o $basename
+        g++ -std=c++17 $1 -o $oldDir/$basename
     else
         diff -q $1 $oldDir/$1 > /dev/null
         if [ $? -eq 1 ];then
             echo "Update detected.  Compiling..."
             rm -f $oldDir/$1
             cp $1 $oldDir/$1
-            g++ -std=c++17 $1 -o $basename
+            g++ -std=c++17 $1 -o $oldDir/$basename
         fi
     fi
     echo "Let's f**king go!"
-    ./$basename
+    ./$oldDir/$basename
 }
 
 _crun(){
@@ -77,12 +77,19 @@ bindkey '^r' select-history
 
 # win32yank alias
 function clip(){
-    cat $1 | win32yank.exe -i
+    cat $1 | xsel -ib
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # default editor
-export EDITOR="/usr/bin/vim"
+export EDITOR="/usr/local/bin/vim"
+
 export MANPAGER="/bin/sh -c \"col -b -x|nvim -R -c 'set ft=man nolist nonu noma' -\""
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="$PATH:/usr/local/go/bin"
+export DISPLAY="$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0"

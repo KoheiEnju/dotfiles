@@ -33,6 +33,7 @@ if !exists('g:vscode')
     Plug 'joshdick/onedark.vim'
     Plug 'itchyny/lightline.vim'
     Plug 'sonph/onehalf', {'rtp': 'vim'}
+    Plug 'markvincze/panda-vim'
     Plug 'ayu-theme/ayu-vim'
 else
     " for vscode-neovim 
@@ -42,18 +43,6 @@ call plug#end()
 
 " about clipbaord
 set clipboard=unnamed
-let g:clipboard = {
-    \   'name': 'myClipboard',
-    \   'copy': {
-    \      '+': 'win32yank.exe -i',
-    \      '*': 'win32yank.exe -i',
-    \    },
-    \   'paste': {
-    \      '+': 'win32yank.exe -o',
-    \      '*': 'win32yank.exe -o',
-    \   },
-    \   'cache_enabled': 1,
-    \ }
 
 if has("win64") || has("win32")
     " shell
@@ -70,7 +59,7 @@ if !exists('g:vscode')
     filetype plugin indent on
     syntax enable
     set termguicolors
-    colorscheme onedark
+    colorscheme molokai
     set number
     set showcmd
     set hls
@@ -87,9 +76,7 @@ if !exists('g:vscode')
     highlight NonText ctermbg=NONE guibg=NONE
     highlight Folded ctermbg=NONE guibg=NONE
     highlight EndOfBuffer ctermbg=NONE guibg=NONE
-    let g:lsp_settings = {
-            \ 'clangd': {'cmd': ['clangd-12']}
-            \ }
+    set mouse=
 endif
 
 
