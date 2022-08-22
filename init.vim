@@ -42,18 +42,18 @@ call plug#end()
 
 " about clipbaord
 set clipboard=unnamed
-let g:clipboard = {
-    \   'name': 'myClipboard',
-    \   'copy': {
-    \      '+': 'win32yank.exe -i',
-    \      '*': 'win32yank.exe -i',
-    \    },
-    \   'paste': {
-    \      '+': 'win32yank.exe -o',
-    \      '*': 'win32yank.exe -o',
-    \   },
-    \   'cache_enabled': 1,
-    \ }
+" let g:clipboard = {
+"     \   'name': 'myClipboard',
+"     \   'copy': {
+"     \      '+': 'win32yank.exe -i',
+"     \      '*': 'win32yank.exe -i',
+"     \    },
+"     \   'paste': {
+"     \      '+': 'win32yank.exe -o',
+"     \      '*': 'win32yank.exe -o',
+"     \   },
+"     \   'cache_enabled': 1,
+"     \ }
 
 if has("win64") || has("win32")
     " shell
@@ -94,4 +94,4 @@ endif
 " map f <Plug>(easymotion-bd-w)
 " nmap f <Plug>(easymotion-overwin-w)
 
-let g:python3_host_prog = "/home/kohei/.config/nvim/.venv/bin/python"
+let g:python3_host_prog = "/home/enju/.config/nvim/.venv/bin/python"
