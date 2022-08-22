@@ -38,18 +38,18 @@ function crun() {
     if [ ! -e .old/$1 ];then
         echo "Compiling new file..."
         cp $1 $oldDir/$1
-        g++ -std=c++17 $1 -o $basename
+        g++ -std=c++17 $1 -o $oldDir/$basename
     else
         diff -q $1 $oldDir/$1 > /dev/null
         if [ $? -eq 1 ];then
             echo "Update detected.  Compiling..."
             rm -f $oldDir/$1
             cp $1 $oldDir/$1
-            g++ -std=c++17 $1 -o $basename
+            g++ -std=c++17 $1 -o $oldDir/$basename
         fi
     fi
     echo "Let's f**king go!"
-    ./$basename
+    ./$oldDir/$basename
 }
 
 _crun(){
@@ -77,33 +77,14 @@ bindkey '^r' select-history
 
 # win32yank alias
 function clip(){
-    cat $1 | win32yank.exe -i
+    cat $1 | xsel -ib
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # default editor
-export EDITOR="/usr/bin/vim"
+export EDITOR="/usr/local/bin/vim"
 
-# vi mode
-bindkey -v
-
-# Yank to the system clipboard
-function vi-yank-xclip {
-    zle vi-yank
-   echo "$CUTBUFFER" | win32yank -i
-}
-
-zle -N vi-yank-xclip
-bindkey -M vicmd 'y' vi-yank-xclip
-
-export PATH="$PATH:/home/enju/tmp/nvim/usr/bin"
-export PATH="$PATH:/home/enju/tmp/delta/usr/bin"
-export PATH="$PATH:/home/enju/tmp/bat/usr/bin"
-export PATH="$PATH:/home/enju/tmp/fd/usr/bin"
-export PATH="$PATH:/home/enju/tmp/fzf/usr/bin"
-export PATH="$PATH:/home/enju/tmp/exa/usr/bin"
-export PATH="$PATH:/home/enju/tmp/ripgrep/usr/bin"
-export PATH="$PATH:/home/enju/software/bin"
+export MANPAGER="/bin/sh -c \"col -b -x|nvim -R -c 'set ft=man nolist nonu noma' -\""
 
