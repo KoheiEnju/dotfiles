@@ -94,7 +94,7 @@ endif
 
 
 " easymotion (deactivated until reading practical vim)
-" map f <Plug>(easymotion-bd-w)
-" nmap f <Plug>(easymotion-overwin-w)
+map <C-f> <Plug>(easymotion-bd-w)
+nmap <C-f> <Plug>(easymotion-overwin-w)
 
 let g:python3_host_prog = "/home/kohei/.config/nvim/.venv/bin/python"
