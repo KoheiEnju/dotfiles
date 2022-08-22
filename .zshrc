@@ -20,9 +20,9 @@ fi
 # Customize to your needs...
 
 # pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
 
 export PATH="$PATH:$HOME/windowsPath"
 export PATH="$PATH:/home/kohei/.cargo/bin"
