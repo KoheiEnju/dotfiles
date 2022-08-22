@@ -87,6 +87,9 @@ if !exists('g:vscode')
     highlight NonText ctermbg=NONE guibg=NONE
     highlight Folded ctermbg=NONE guibg=NONE
     highlight EndOfBuffer ctermbg=NONE guibg=NONE
+    let g:lsp_settings = {
+            \ 'clangd': {'cmd': ['clangd-12']}
+            \ }
 endif
 
 
