@@ -96,18 +96,3 @@ export DISPLAY="$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0"
 export PATH="$PATH:/opt/nvidia/hpc_sdk/Linux_x86_64/22.7/compilers/bin"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/wsl/lib"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/kohei/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/kohei/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/kohei/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/kohei/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
