@@ -93,6 +93,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="$PATH:/usr/local/go/bin"
 export DISPLAY="$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0"
+export PATH="$PATH:/opt/nvidia/hpc_sdk/Linux_x86_64/22.7/compilers/bin"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/wsl/lib"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
