@@ -96,3 +96,7 @@ export DISPLAY="$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0"
 export PATH="$PATH:/opt/nvidia/hpc_sdk/Linux_x86_64/22.7/compilers/bin"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/wsl/lib"
 
+function sim(){
+    host="100.80.109.$(($1+60))"
+    ssh $host -l enju -J main
+}
