@@ -9,7 +9,7 @@ Plug 'tpope/vim-surround'
 
 if !exists('g:vscode')
     " neovim
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }   "" extension
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }   
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'lambdalisue/fern.vim'
@@ -42,7 +42,7 @@ endif
 call plug#end()
 
 " about clipbaord
-set clipboard=unnamed
+set clipboard=unnamed,unnamedplus
 
 if has("win64") || has("win32")
     " shell

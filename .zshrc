@@ -25,7 +25,8 @@ fi
 # eval "$(pyenv init -)"
 
 export PATH="$PATH:$HOME/windowsPath"
-export PATH="$PATH:/home/kohei/.cargo/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/go/bin"
 
 # g++ alias
 function crun() {
@@ -58,16 +59,6 @@ _crun(){
 
 compdef _crun crun
 
-start(){
-    cmd /c start $1 > /dev/null
-}
-
-_start(){
-    _files
-}
-
-compdef _start start
-
 function select-history() {
   BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
   CURSOR=$#BUFFER
@@ -92,11 +83,20 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="$PATH:/usr/local/go/bin"
-export DISPLAY="$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0"
+# export DISPLAY="$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0"
+export PATH="$PATH:/usr/local/cuda/bin"
 export PATH="$PATH:/opt/nvidia/hpc_sdk/Linux_x86_64/22.7/compilers/bin"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/wsl/lib"
 
-function sim(){
-    host="100.80.109.$(($1+60))"
-    ssh $host -l enju -J main
-}
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+export PYTHONPATH="$PYTHONPATH:$HOME/repos/acanthus"
+export PATH="$PATH:$HOME/.local/bin"
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+export PYTHONPATH="$PYTHONPATH:$HOME/repos/acanthus"
+export PATH="$PATH:$HOME/.local/bin"
