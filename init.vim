@@ -9,7 +9,8 @@ Plug 'tpope/vim-surround'
 
 if !exists('g:vscode')
     " neovim
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }   
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'lambdalisue/fern.vim'
@@ -77,6 +78,8 @@ if !exists('g:vscode')
     highlight Folded ctermbg=NONE guibg=NONE
     highlight EndOfBuffer ctermbg=NONE guibg=NONE
     set mouse=
+    autocmd VimEnter * TSEnable highlight
+    autocmd VimEnter * TSEnable indent
 endif
 
 
