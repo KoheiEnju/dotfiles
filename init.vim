@@ -9,6 +9,7 @@ Plug 'tpope/vim-surround'
 
 if !exists('g:vscode')
     " neovim
+    Plug 'jmcantrell/vim-virtualenv'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -79,6 +80,10 @@ if !exists('g:vscode')
     highlight EndOfBuffer ctermbg=NONE guibg=NONE
     set mouse=
     autocmd VimEnter * TSEnable highlight
+    let mapleader = "\<Space>"
+    nmap <buffer> <leader>ho <plug>(lsp-hover)
+    nmap <buffer> <leader>pdf <plug>(lsp-peek-definition)
+    nmap <buffer> <leader>gd <plug>(lsp-definition)
 endif
 
 
@@ -87,3 +92,6 @@ map <C-f> <Plug>(easymotion-bd-w)
 nmap <C-f> <Plug>(easymotion-overwin-w)
 
 let g:python3_host_prog = "/home/kohei/.config/nvim/.venv/bin/python"
+let g:fern_disable_startup_warnings = 1
+tnoremap <Esc> <C-\><C-n>
+set signcolumn=no
