@@ -83,6 +83,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH="$PATH:/usr/local/go/bin"
+<<<<<<< Updated upstream
 # export DISPLAY="$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0"
 export PATH="$PATH:/usr/local/cuda/bin"
 export PATH="$PATH:/opt/nvidia/hpc_sdk/Linux_x86_64/22.7/compilers/bin"
@@ -100,3 +101,13 @@ eval "$(pyenv init -)"
 
 export PYTHONPATH="$PYTHONPATH:$HOME/repos/acanthus"
 export PATH="$PATH:$HOME/.local/bin"
+
+export DISPLAY="$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0"
+export DISPLAY="$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0"
+
+export PATH="$PATH:$HOME/local/bin"
+export PYTHONPATH="$PYTHONPATH:$HOME/software/acanthus"
+
+pyrun (){
+    srun -p $1 singularity run --env PYTHONPATH="$PYTHONPATH" --nv /home/singularity/acanthus-dev.sif python3 $2
+}
