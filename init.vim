@@ -79,7 +79,6 @@ if !exists('g:vscode')
     highlight EndOfBuffer ctermbg=NONE guibg=NONE
     set mouse=
     autocmd VimEnter * TSEnable highlight
-    autocmd VimEnter * TSEnable indent
 endif
 
 
