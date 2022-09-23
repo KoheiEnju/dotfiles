@@ -9,6 +9,8 @@ Plug 'tpope/vim-surround'
 
 if !exists('g:vscode')
     " neovim
+    Plug 'easymotion/vim-easymotion'
+    Plug 'tpope/vim-repeat'
     Plug 'jmcantrell/vim-virtualenv'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
@@ -84,6 +86,7 @@ if !exists('g:vscode')
     nmap <buffer> <leader>ho <plug>(lsp-hover)
     nmap <buffer> <leader>pdf <plug>(lsp-peek-definition)
     nmap <buffer> <leader>gd <plug>(lsp-definition)
+    nmap <buffer> <leader>rg :Rg <CR>
 endif
 
 
@@ -95,3 +98,17 @@ let g:python3_host_prog = "/home/kohei/.config/nvim/.venv/bin/python"
 let g:fern_disable_startup_warnings = 1
 tnoremap <Esc> <C-\><C-n>
 set signcolumn=no
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
