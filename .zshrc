@@ -89,9 +89,6 @@ export PATH="$PATH:$HOME/.local/bin"
 export PYTHONPATH="$PYTHONPATH:$HOME/repos/acanthus"
 export PATH="$PATH:$HOME/.local/bin"
 
-export DISPLAY="$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0"
-export DISPLAY="$(grep nameserver /etc/resolv.conf | sed 's/nameserver //'):0"
-
 export PATH="$PATH:$HOME/local/bin"
 export PYTHONPATH="$PYTHONPATH:$HOME/software/acanthus"
 
@@ -99,3 +96,5 @@ pyrun (){
     srun -p $1 singularity run --env PYTHONPATH="$PYTHONPATH" --nv /home/singularity/acanthus-dev.sif python3 $2
 }
 eval "$(zoxide init zsh)"
+
+export PATH="$PATH:$HOME/repos/alacritty/target/release"
