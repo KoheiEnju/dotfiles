@@ -503,14 +503,14 @@ colors:
 #  program: /bin/bash
 #  args:
 #    - --login
-shell:
-  program: "C:\\WINDOWS\\system32\\wsl.exe -d Ubuntu-22.04" 
+# shell:
+# program: "C:\\WINDOWS\\system32\\wsl.exe -d Ubuntu-22.04" 
 
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
-working_directory: //wsl$/Ubuntu-22.04/home/kohei
+# working_directory: //wsl$/Ubuntu-22.04/home/kohei
 
 # Send ESC (\x1b) before characters when alt is pressed.
 #alt_send_esc: true
