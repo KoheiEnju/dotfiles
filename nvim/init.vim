@@ -6,9 +6,9 @@ if has("linux")
     endif
 elseif has("win64")
     if exists("g:vscode")
-        source ~/AppData/nvim/vscode.vim
+        source ~/AppData/Local/nvim/vscode.vim
     else 
-        source ~/AppData/nvim/neovim.vim
+        source ~/AppData/Local/nvim/neovim.vim
     endif
     set shell=pwsh
     set shellcmdflag=-c
