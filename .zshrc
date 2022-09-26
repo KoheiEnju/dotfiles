@@ -98,3 +98,4 @@ pyrun (){
 eval "$(zoxide init zsh)"
 
 export PATH="$PATH:$HOME/repos/alacritty/target/release"
+alias nnn="nnn -c"
