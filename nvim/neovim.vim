@@ -71,7 +71,7 @@ set expandtab
 " ==========FILER(Fern)==========
 let g:fern_disable_startup_warnings = 1
 tnoremap <Esc> <C-\><C-n>
-set signcolumn=no
+set signcolumn=yes
 let g:fern#default_hidden=1
 
 " python
