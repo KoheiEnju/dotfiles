@@ -19,8 +19,10 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'rakr/vim-one'
 Plug 'itchyny/lightline.vim'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'leoluz/nvim-dap-go'
 call plug#end()
-
 
 " ==========BINDINGS==========
 let mapleader = "\<Space>"
@@ -28,6 +30,7 @@ nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=45<CR>
 nmap <buffer> <leader>ho <plug>(lsp-hover)
 nmap <buffer> <leader>pdf <plug>(lsp-peek-definition)
 nmap <buffer> <leader>gd <plug>(lsp-definition)
+nmap <buffer> <F12> <plug>(lsp-definition)
 nmap <buffer> <leader>rg :Rg <CR>
 "" easymotion
 " <Leader>f{char} to move to {char}
@@ -74,11 +77,60 @@ tnoremap <Esc> <C-\><C-n>
 set signcolumn=yes
 let g:fern#default_hidden=1
 
+" DEBUG
+lua << EOF
+  require'dapui'.setup()
+  require'dap-go'.setup()
+  require'dap'.listeners.before['event_initialized']['custom'] = function(session, body)
+    require'dapui'.open()
+  end
+  require'dap'.listeners.before['event_terminated']['custom'] = function(session, body)
+    require'dapui'.close()
+  end
+  Dap = {}
+  Dap.vim_test_strategy = {
+    go = function(cmd)
+      local test_func = string.match(cmd, "-run '([^ ]+)'")
+      local path = string.match(cmd, "[^ ]+$")
+      path = string.gsub(path, "/%.%.%.", "")
+      configuration = {
+        type = "go",
+        name = "nvim-dap strategy",
+        request = "launch",
+        mode = "test",
+        program = path,
+        args = {},
+      }
+      if test_func then
+        table.insert(configuration.args, "-test.run")
+        table.insert(configuration.args, test_func)
+      end
+
+      if path == nil or path == "." then
+        configuration.program = "./"
+      end
+      return configuration
+    end,
+  }
+  function Dap.strategy()
+    local cmd = vim.g.vim_test_last_command
+    local filetype = vim.bo.filetype
+    local f = Dap.vim_test_strategy[filetype]
+
+    if not f then
+      print("This filetype is not supported.")
+      return
+    end
+
+    configuration = f(cmd)
+    require'dap'.run(configuration)
+  end
+EOF
+
 " python
 if has("linux")
     let g:python3_host_prog = system('echo -n $(which python3)')
 endif
-
 " pylsp
 autocmd BufWritePre *.py LspDocumentFormatSync
 let g:lsp_settings = {
