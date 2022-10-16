@@ -99,3 +99,9 @@ eval "$(zoxide init zsh)"
 
 export PATH="$PATH:$HOME/repos/alacritty/target/release"
 alias nnn="nnn -c"
+
+TIMEFMT=$'real\t%E\nuser\t%U\nsys\t%S'
+
+alias ls="lsd"
+alias lla="ls -la"
+alias lt="ls --tree"
