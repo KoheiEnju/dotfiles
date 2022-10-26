@@ -19,6 +19,14 @@ if status is-interactive
     # TODO: This shoud be activated only in WSL.
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 
+    # nvm
+    set --universal nvm_default_version v18.12.0
+
+    # python
+    if [ -e $HOME/.py/bin/activate.fish ]
+        source $HOME/.py/bin/activate.fish
+    end
+
     # this line must be at end of the file
     starship init fish | source
 end
