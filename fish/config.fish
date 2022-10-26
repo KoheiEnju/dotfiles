@@ -1,9 +1,9 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    export PATH="$PATH:$HOME/.cargo/bin"
-    export PATH="$PATH:/usr/local/go/bin"
-    export EDITOR="/usr/local/bin/nvim"
-    export MANPAGER="/bin/sh -c \"col -b -x|nvim -R -c 'set ft=man nolist nonu noma' -\""
+    set PATH "$PATH:$HOME/.cargo/bin"
+    set PATH "$PATH:/usr/local/go/bin"
+    set EDITOR "/usr/local/bin/nvim"
+    set MANPAGER "/bin/sh -c \"col -b -x|nvim -R -c 'set ft=man nolist nonu noma' -\""
 
     alias ls="lsd"
     # la, ll is already defined in fish.
@@ -20,7 +20,7 @@ if status is-interactive
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 
     # nvm
-    set --universal nvm_default_version v18.12.0
+    set PATH "$PATH:$HOME/.local/share/nvm/v18.12.0/bin"
 
     # python
     if [ -e $HOME/.py/bin/activate.fish ]
