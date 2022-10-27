@@ -13,7 +13,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'lambdalisue/fern.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
+Plug 'KoheiEnju/vim-lsp-settings'
 Plug 'neovim/nvim-lspconfig'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
@@ -129,7 +129,7 @@ EOF
 
 " python
 if has("linux")
-    let g:python3_host_prog = system('echo -n $(which python3)')
+    let g:python3_host_prog = "/usr/bin/python3"
 endif
 " pylsp
 autocmd BufWritePre *.py LspDocumentFormatSync
