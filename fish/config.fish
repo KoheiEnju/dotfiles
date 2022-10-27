@@ -1,7 +1,8 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    set PATH "$PATH:$HOME/.cargo/bin"
-    set PATH "$PATH:/usr/local/go/bin"
+    set PATH "$HOME/.cargo/bin" $PATH
+    set PATH "/usr/local/go/bin" $PATH
+    set PATH "/usr/local/node/bin" $PATH
     set EDITOR "/usr/local/bin/nvim"
     set MANPAGER "/bin/sh -c \"col -b -x|nvim -R -c 'set ft=man nolist nonu noma' -\""
 
