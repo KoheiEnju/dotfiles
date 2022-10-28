@@ -1,28 +1,5 @@
 " Plugins
-call plug#begin()
-Plug 'tpope/vim-surround'
-Plug 'simeji/winresizer'
-Plug 'TaDaa/vimade'
-Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-repeat'
-Plug 'jmcantrell/vim-virtualenv'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'lambdalisue/fern.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'KoheiEnju/vim-lsp-settings'
-Plug 'neovim/nvim-lspconfig'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'rakr/vim-one'
-Plug 'itchyny/lightline.vim'
-Plug 'mfussenegger/nvim-dap'
-Plug 'rcarriga/nvim-dap-ui'
-Plug 'leoluz/nvim-dap-go'
-call plug#end()
+source ~/.config/nvim/neovim-plugin.vim
 
 " ==========BINDINGS==========
 let mapleader = "\<Space>"
@@ -57,6 +34,7 @@ set termguicolors
 set number
 set showcmd
 set hls
+set laststatus=3
 colorscheme one
 let g:lightline = {'colorscheme': 'one'}
 autocmd VimEnter * TSEnable highlight
