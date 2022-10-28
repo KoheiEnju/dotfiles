@@ -47,6 +47,7 @@ let g:vimade.enabletreesitter = 1
 
 " ==========BEHAVIOR==========
 set splitright
+set splitbelow
 set tabstop=4
 set shiftwidth=4
 set expandtab
