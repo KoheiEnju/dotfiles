@@ -31,12 +31,14 @@ set mouse=
 " ==========APPEARANCE==========
 syntax enable
 set termguicolors
-set number
+colorscheme one
+let g:lightline = {'colorscheme': 'one'}
+set number relativenumber
+set cursorline
+hi CursorLineNr guibg=none guifg=yellow
 set showcmd
 set hls
 set laststatus=3
-colorscheme one
-let g:lightline = {'colorscheme': 'one'}
 autocmd VimEnter * TSEnable highlight
 let g:vimade = {}
 let g:vimade.fadelevel = 0.6
