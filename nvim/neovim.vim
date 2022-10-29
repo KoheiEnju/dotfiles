@@ -35,7 +35,7 @@ colorscheme one
 let g:lightline = {'colorscheme': 'one'}
 set number relativenumber
 set cursorline
-hi CursorLineNr guibg=none guifg=yellow
+hi CursorLineNr guibg=none guifg=Cyan
 set showcmd
 set hls
 set laststatus=3
