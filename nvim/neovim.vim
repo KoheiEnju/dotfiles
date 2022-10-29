@@ -31,8 +31,7 @@ set mouse=
 " ==========APPEARANCE==========
 syntax enable
 set termguicolors
-colorscheme one
-let g:lightline = {'colorscheme': 'one'}
+colorscheme nightfox
 set number relativenumber
 set cursorline
 hi CursorLineNr guibg=none guifg=Cyan
