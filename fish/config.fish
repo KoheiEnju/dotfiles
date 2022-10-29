@@ -1,8 +1,10 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+    set fish_greeting
+
     set PATH "$HOME/.cargo/bin" $PATH
     set PATH "/usr/local/go/bin" $PATH
-    set PATH "/usr/local/node-v18.12.0-linux-x64/bin" $PATH
+    # set PATH "/usr/local/node-v18.12.0-linux-x64/bin" $PATH
     set EDITOR "/usr/local/bin/nvim"
     set MANPAGER "/bin/sh -c \"col -b -x|nvim -R -c 'set ft=man nolist nonu noma' -\""
 
@@ -19,9 +21,6 @@ if status is-interactive
 
     # TODO: This shoud be activated only in WSL.
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
-
-    # nvm
-    set PATH "$PATH:$HOME/.local/share/nvm/v18.12.0/bin"
 
     # python
     if [ -e $HOME/.py/bin/activate.fish ]
