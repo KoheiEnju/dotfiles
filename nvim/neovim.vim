@@ -21,8 +21,12 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
+" type jj to exit insert mode
+inoremap <silent> jj <Esc>
+" no-hihghlight
+nmap <Leader>noh :noh <CR>
 
-" ==========CLIPBOARD==========
+" " ==========CLIPBOARD==========
 set clipboard=unnamed,unnamedplus
 
 " ==========MOUSE==========
@@ -38,6 +42,7 @@ hi CursorLineNr guibg=none guifg=Cyan
 set showcmd
 set hls
 set laststatus=3
+set title
 autocmd VimEnter * TSEnable highlight
 let g:vimade = {}
 let g:vimade.fadelevel = 0.6
@@ -47,9 +52,14 @@ let g:vimade.enabletreesitter = 1
 " ==========BEHAVIOR==========
 set splitright
 set splitbelow
-set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set expandtab
+set ignorecase
+set infercase
+set noswapfile
+set nobackup
+set nowritebackup
 
 " ==========FILER(Fern)==========
 let g:fern_disable_startup_warnings = 1
