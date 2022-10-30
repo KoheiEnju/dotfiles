@@ -101,7 +101,7 @@ vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, bufopts)
       end
     })
   },
-    snippet = {
+   snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
         vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
@@ -123,7 +123,7 @@ vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, bufopts)
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'vsnip' }, -- For vsnip users.
+      { name = 'vsnip' },
       -- { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.

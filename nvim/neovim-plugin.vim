@@ -44,6 +44,9 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'onsails/lspkind.nvim'
 Plug 'j-hui/fidget.nvim'
 Plug 'kkharji/lspsaga.nvim'
+" vsnip
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 " DAP
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
