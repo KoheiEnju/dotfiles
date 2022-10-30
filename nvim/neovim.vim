@@ -79,15 +79,28 @@ require('mason-lspconfig').setup_handlers({ function(server)
   require('lspconfig')[server].setup(opt)
 end }) require("mason").setup()
 
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+--  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, bufopts)
+--  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+--  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
 
 -- Set up nvim-cmp.
   local cmp = require'cmp'
-
+  local lspkind = require('lspkind')
   cmp.setup({
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol', -- show only symbol annotations
+      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+
+      -- The function below will be called before any actual modifications from lspkind
+      -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+      before = function (entry, vim_item)
+        return vim_item
+      end
+    })
+  },
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
@@ -124,7 +137,67 @@ end }) require("mason").setup()
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
   }
+
+  require("fidget").setup{}
+
+local lspsaga = require 'lspsaga'
+lspsaga.setup { -- defaults ...
+  debug = false,
+  use_saga_diagnostic_sign = true,
+  -- diagnostic sign
+  error_sign = "",
+  warn_sign = "",
+  hint_sign = "",
+  infor_sign = "",
+  diagnostic_header_icon = "   ",
+  -- code action title icon
+  code_action_icon = " ",
+  code_action_prompt = {
+    enable = true,
+    sign = true,
+    sign_priority = 40,
+    virtual_text = true,
+  },
+  finder_definition_icon = "  ",
+  finder_reference_icon = "  ",
+  max_preview_lines = 10,
+  finder_action_keys = {
+    open = "o",
+    vsplit = "s",
+    split = "i",
+    quit = "q",
+    scroll_down = "<C-f>",
+    scroll_up = "<C-b>",
+  },
+  code_action_keys = {
+    quit = "q",
+    exec = "<CR>",
+  },
+  rename_action_keys = {
+    quit = "<C-c>",
+    exec = "<CR>",
+  },
+  definition_preview_icon = "  ",
+  border_style = "single",
+  rename_prompt_prefix = "➤",
+  rename_output_qflist = {
+    enable = false,
+    auto_open_qflist = false,
+  },
+  server_filetype_map = {},
+  diagnostic_prefix_format = "%d. ",
+  diagnostic_message_format = "%m %c",
+  highlight_prefix = false,
+}
+
+local map = vim.api.nvim_buf_set_keymap
+map(0, "n", "gr", "<cmd>Lspsaga rename<cr>", {silent = true, noremap = true})
+map(0, "n", "<leader>pd", "<cmd>Lspsaga preview_definition<cr>", {silent = true, noremap = true})
+map(0, "n", "K",  "<cmd>Lspsaga hover_doc<cr>", {silent = true, noremap = true})
+map(0, "n", "<leader>lf",  "<cmd>Lspsaga lsp_finder<cr>", {silent = true, noremap = true})
+
 EOF
+
 
 " ==========FILER(Fern)==========
 let g:fern_disable_startup_warnings = 1
@@ -192,14 +265,3 @@ EOF
 if has("linux")
     let g:python3_host_prog = "/usr/bin/python3"
 endif
-" pylsp
-autocmd BufWritePre *.py LspDocumentFormatSync
-let g:lsp_settings = {
-            \  'pylsp-all': {
-            \    'workspace_config': {
-            \      'pylsp': {
-            \        'configurationSources': ['flake8'],
-            \        }
-            \      }
-            \    }
-            \  }
