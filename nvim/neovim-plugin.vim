@@ -18,7 +18,7 @@ Plug 'folke/noice.nvim'
 " Appearance
 Plug 'rakr/vim-one'
 Plug 'EdenEast/nightfox.nvim'
-Plug 'itchyny/lightline.vim'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'akinsho/bufferline.nvim'
 Plug 'TaDaa/vimade'
 " Font
