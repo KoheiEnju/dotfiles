@@ -46,6 +46,7 @@ let g:vimade.enablesigns = 1
 let g:vimade.enabletreesitter = 1
 lua << EOF
     require("noice").setup()
+    require("lualine").setup()
 EOF
 
 " ==========BEHAVIOR==========
