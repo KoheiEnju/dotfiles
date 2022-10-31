@@ -60,6 +60,12 @@ set infercase
 set noswapfile
 set nobackup
 set nowritebackup
+lua << EOF
+require("bufferline").setup{}
+EOF
+nnoremap <silent><Tab> :BufferLineCycleNext<CR>
+nnoremap <silent><S-Tab> :BufferLineCyclePrev<CR>
+nnoremap <silent>gb :BufferLinePick<CR>
 
 " LSP
 lua << EOF
