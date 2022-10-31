@@ -2,9 +2,12 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     set fish_greeting
 
+    set DENO_INSTALL "$HOME/.deno"
+
     set PATH "$HOME/.cargo/bin" $PATH
     set PATH "/usr/local/go/bin" $PATH
     set PATH "$HOME/.local/bin" $PATH
+    set PATH "$DENO_INSTALL/bin" $PATH
     # set PATH "/usr/local/node-v18.12.0-linux-x64/bin" $PATH
     set EDITOR "/usr/local/bin/nvim"
     set MANPAGER "/bin/sh -c \"col -b -x|nvim -R -c 'set ft=man nolist nonu noma' -\""
