@@ -26,7 +26,7 @@ nmap <Leader>noh :noh <CR>
 set clipboard=unnamed,unnamedplus
 
 " ==========MOUSE==========
-set mouse=
+set mouse=a
 
 " ==========APPEARANCE==========
 syntax enable
@@ -52,6 +52,7 @@ EOF
 " ==========BEHAVIOR==========
 set splitright
 set splitbelow
+set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
