@@ -11,9 +11,10 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'
 " Movement
 Plug 'easymotion/vim-easymotion'
+Plug 'unblevable/quick-scope'
 " UI
 Plug 'MunifTanjim/nui.nvim'
-Plug 'rcarriga/nvim-notify'
+" Plug 'rcarriga/nvim-notify'
 Plug 'folke/noice.nvim'
 " Appearance
 Plug 'rakr/vim-one'
