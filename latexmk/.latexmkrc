@@ -13,3 +13,5 @@ $pdf_mode = 3;
 $pvc_view_file_via_temporary = 0;
 $dvi_previewer = "xdg-open %S";
 $pdf_previewer = "xdg-open %S";
+
+$clean_full_txt = "%R.synctex.gz"
