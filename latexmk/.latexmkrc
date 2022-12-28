@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-$out_dir = "./out";
+# $out_dir = "./out";
  
 $latex = 'uplatex -synctex=1 -halt-on-error -interaction=nonstopmode -file-line-error %O %S';
 $bibtex = 'upbibtex %O %S';
@@ -14,4 +14,3 @@ $pvc_view_file_via_temporary = 0;
 $dvi_previewer = "xdg-open %S";
 $pdf_previewer = "xdg-open %S";
 
-$clean_full_txt = "%R.synctex.gz"
