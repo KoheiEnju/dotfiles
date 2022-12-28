@@ -8,15 +8,15 @@ nmap <buffer> <leader>rg :Rg <CR>
 "" easymotion
 " <Leader>f{char} to move to {char}
 map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
+" nmap <Leader>f <Plug>(easymotion-overwin-f)
 " s{char}{char} to move to {char}{char}
 nmap s <Plug>(easymotion-overwin-f2)
 " Move to line
 map <Leader>l <Plug>(easymotion-bd-jk)
-nmap <Leader>l <Plug>(easymotion-overwin-line)
+" nmap <Leader>l <Plug>(easymotion-overwin-line)
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
+" nmap <Leader>w <Plug>(easymotion-overwin-w)
 " type jj to exit insert mode
 inoremap <silent> jj <Esc>
 " no-hihghlight
@@ -273,3 +273,42 @@ EOF
 if has("linux")
     let g:python3_host_prog = "/usr/bin/python3"
 endif
+
+" texlab
+lua << EOF
+require("lspconfig").texlab.setup({
+  cmd = { "texlab" },
+  settings = {
+    texlab = {
+      rootDirectory = nil,
+      build = {
+        executable = "mylatexmk",
+        args = { "%f" },
+      },
+      forwardSearch = {
+        executable = "zathura",
+        args = { "--synctex-editor-command", "pyremote /tmp/demo-neovim-server %{input} %{line}", "--synctex-forward=%l:0:%f", "%p"},
+      },
+    },
+  },
+})
+EOF
+
+" inverse
+function ServerStartIfNotExist()
+    let servername = "/tmp/demo-neovim-server"
+    if !filereadable(servername)
+        call serverstart(servername)
+    endif
+endfunction
+
+autocmd FileType tex call ServerStartIfNotExist()
+autocmd FileType plaintex call ServerStartIfNotExist()
+
+" forward
+autocmd FileType tex nmap <Leader>b :TexlabBuild <CR>
+autocmd FileType plaintex nmap <Leader>b :TexlabBuild <CR>
+
+autocmd FileType tex nmap <Leader>p :TexlabForward <CR>
+autocmd FileType plaintex nmap <Leader>p :TexlabForward <CR>
+
