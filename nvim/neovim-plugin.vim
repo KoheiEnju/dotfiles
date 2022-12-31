@@ -21,12 +21,14 @@ Plug 'rakr/vim-one'
 Plug 'EdenEast/nightfox.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'akinsho/bufferline.nvim'
-Plug 'TaDaa/vimade'
+" Plug 'TaDaa/vimade'
 " Font
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/glyph-palette.vim'
 " Window management
 Plug 'simeji/winresizer'
+" Terminal
+Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 " Fern
 Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/fern-git-status.vim'
@@ -44,7 +46,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'onsails/lspkind.nvim'
-Plug 'j-hui/fidget.nvim'
+" Plug 'j-hui/fidget.nvim'
 Plug 'kkharji/lspsaga.nvim'
 " vsnip
 Plug 'hrsh7th/cmp-vsnip'

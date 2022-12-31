@@ -40,10 +40,10 @@ set hls
 set laststatus=3
 set title
 autocmd VimEnter * TSEnable highlight
-let g:vimade = {}
-let g:vimade.fadelevel = 0.6
-let g:vimade.enablesigns = 1
-let g:vimade.enabletreesitter = 1
+" let g:vimade = {}
+" let g:vimade.fadelevel = 0.6
+" let g:vimade.enablesigns = 1
+" let g:vimade.enabletreesitter = 1
 lua << EOF
     require("noice").setup()
     require("lualine").setup()
@@ -62,12 +62,12 @@ set infercase
 set noswapfile
 set nobackup
 set nowritebackup
-lua << EOF
-require("bufferline").setup{}
-EOF
-nnoremap <silent><Tab> :BufferLineCycleNext<CR>
-nnoremap <silent><S-Tab> :BufferLineCyclePrev<CR>
-nnoremap <silent>gb :BufferLinePick<CR>
+" lua << EOF
+" require("bufferline").setup{}
+" EOF
+" nnoremap <silent><Tab> :BufferLineCycleNext<CR>
+" nnoremap <silent><S-Tab> :BufferLineCyclePrev<CR>
+" nnoremap <silent>gb :BufferLinePick<CR>
 
 " LSP
 lua << EOF
@@ -146,7 +146,7 @@ vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, bufopts)
     -- refer to the configuration section below
   }
 
-  require("fidget").setup{}
+  -- require("fidget").setup{}
 
 local lspsaga = require 'lspsaga'
 lspsaga.setup { -- defaults ...
@@ -293,6 +293,24 @@ require("lspconfig").texlab.setup({
   },
 })
 EOF
+
+" toggleterm
+lua << EOF
+require("toggleterm").setup{}
+
+local Terminal = require("toggleterm.terminal").Terminal
+local lazygit = Terminal:new({
+	cmd = "lazygit",
+	direction = "float",
+	hidden = true
+})
+function _lazygit_toggle()
+	lazygit:toggle()
+end
+vim.api.nvim_set_keymap("n", "lg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+EOF
+
+nmap <Leader>tt :ToggleTerm direction=float<CR>
 
 " inverse
 function ServerStartIfNotExist()
