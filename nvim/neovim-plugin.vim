@@ -46,7 +46,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'onsails/lspkind.nvim'
-" Plug 'j-hui/fidget.nvim'
+Plug 'j-hui/fidget.nvim'
 Plug 'kkharji/lspsaga.nvim'
 " vsnip
 Plug 'hrsh7th/cmp-vsnip'

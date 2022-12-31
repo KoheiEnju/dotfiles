@@ -39,14 +39,15 @@ set showcmd
 set hls
 set laststatus=3
 set title
+
 autocmd VimEnter * TSEnable highlight
 " let g:vimade = {}
 " let g:vimade.fadelevel = 0.6
 " let g:vimade.enablesigns = 1
 " let g:vimade.enabletreesitter = 1
 lua << EOF
-    require("noice").setup()
-    require("lualine").setup()
+require("noice").setup({ lsp = { progress = { enabled = false, }, }})
+require("lualine").setup()
 EOF
 
 " ==========BEHAVIOR==========
@@ -62,12 +63,12 @@ set infercase
 set noswapfile
 set nobackup
 set nowritebackup
-" lua << EOF
-" require("bufferline").setup{}
-" EOF
-" nnoremap <silent><Tab> :BufferLineCycleNext<CR>
-" nnoremap <silent><S-Tab> :BufferLineCyclePrev<CR>
-" nnoremap <silent>gb :BufferLinePick<CR>
+lua << EOF
+require("bufferline").setup{}
+EOF
+nnoremap <silent><Tab> :BufferLineCycleNext<CR>
+nnoremap <silent><S-Tab> :BufferLineCyclePrev<CR>
+nnoremap <silent>gb :BufferLinePick<CR>
 
 " LSP
 lua << EOF
@@ -87,9 +88,10 @@ require('mason-lspconfig').setup_handlers({ function(server)
   require('lspconfig')[server].setup(opt)
 end }) require("mason").setup()
 
---  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
 vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, bufopts)
---  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+
 --  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
 
 -- Set up nvim-cmp.
@@ -146,8 +148,7 @@ vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, bufopts)
     -- refer to the configuration section below
   }
 
-  -- require("fidget").setup{}
-
+-- require("fidget").setup{}
 local lspsaga = require 'lspsaga'
 lspsaga.setup { -- defaults ...
   debug = false,
