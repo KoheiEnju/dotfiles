@@ -3,6 +3,7 @@ local wezterm = require 'wezterm'
 local act = wezterm.action
 
 return {
+    use_img = true,
     -- Appearance
     font = wezterm.font 'HackGen35 Console NF',
     color_scheme = "nord",
