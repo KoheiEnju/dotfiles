@@ -22,6 +22,7 @@ fi
 export PATH="$PATH:$HOME/windowsPath"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$HOME/workdir/nvim-linux64/bin"
 
 # g++ alias
 function crun() {
@@ -72,7 +73,7 @@ function clip(){
 # default editor
 export EDITOR="/usr/local/bin/vim"
 
-export MANPAGER="/bin/sh -c \"col -b -x|nvim -R -c 'set ft=man nolist nonu noma' -\""
+export MANPAGER='nvim +Man!'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -105,3 +106,49 @@ export TIMEFMT=$'real\t%E\nuser\t%U\nsys\t%S'
 alias ls="lsd"
 alias lla="ls -la"
 alias lt="ls --tree"
+
+eval "$(starship init zsh)"
+
+# Kernel Development
+# ref: https://kuniyu.jp/ja/blog/2/
+
+GHQ_ROOT="$HOME/ghq"
+LINUX_REPO="$GHQ_ROOT/git.kernel.org/pub/scm/linux/kernel/git/stable/linux"
+alias myqemu_vanilla="qemu-system-x86_64 -boot c -m 2048M -kernel /home/fedora/ghq/github.com/torvalds/linux/arch/x86/boot/bzImage -hda $GHQ_ROOT/gitlab.com/buildroot.org/buildroot/output/images/rootfs.ext4 -append 'root=/dev/sda rw console=ttyS0,115200 acpi=off nokaslr' -serial stdio -display none -nic user,hostfwd=tcp::10022-:22"
+alias myqemu_fedora="qemu-system-x86_64 -boot c -m 2048M -kernel /boot/vmlinuz-6.6.9-200.fc39.x86_64 -hda $GHQ_ROOT/gitlab.com/buildroot.org/buildroot/output/images/rootfs.ext4 -append 'root=/dev/sda rw console=ttyS0,115200 acpi=off nokaslr' -serial stdio -display none -nic user,hostfwd=tcp::10022-:22"
+
+# Load pyenv automatically by appending
+# the following to
+# ~/.bash_profile if it exists, otherwise ~/.profile (for login shells)
+# and ~/.bashrc (for interactive shells) :
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# Restart your shell for the changes to take effect.
+
+# Load pyenv-virtualenv automatically by adding
+# the following to ~/.bashrc:
+
+eval "$(pyenv virtualenv-init -)"
+
+function globalx () {
+    global -x $1 | fzf --reverse | awk '{system("nvim +" $2 " " $3)}'
+}
+
+function globalrx () {
+    global -rx $1 | fzf --reverse | awk '{system("nvim +" $2 " " $3)}'
+}
+
+function whichrpm (){
+    rpm -qf $(which $1)
+}
+
+function _globalx () {
+    global -x $1 | fzf --reverse | awk '{print("+" $2 " " $3)}'
+}
+
+function chgrep(){
+    grep --include '*.c' --include '*.h' $@
+}

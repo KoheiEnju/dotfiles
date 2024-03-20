@@ -313,6 +313,7 @@ EOF
 
 nmap <Leader>tt :ToggleTerm direction=float<CR>
 
+" file
 " inverse
 function ServerStartIfNotExist()
     let servername = "/tmp/demo-neovim-server"
@@ -331,3 +332,16 @@ autocmd FileType plaintex nmap <Leader>b :TexlabBuild <CR>
 autocmd FileType tex nmap <Leader>p :TexlabForward <CR>
 autocmd FileType plaintex nmap <Leader>p :TexlabForward <CR>
 
+" GNU global
+" command! -nargs=1 Test call fzf#run(fzf#wrap({"source": "global -x <args> | awk '{print(\"+\" $2 \" \" $3)}'"}))
+
+function s:gtags_search(line)
+     let l:line = split(a:line)[1]
+     let l:file = split(a:line)[2]
+     execute 'vs +'.l:line l:file
+endfunction
+
+let g:fzf_layout = { 'window': { 'width': 0.95, 'height': 0.95 } }
+command! -nargs=1 GlobalFZF :call fzf#run(fzf#wrap({'source':'global -x <args>', 'sink':function('<sid>gtags_search'), "options": ["--preview", "bat --color=always -r {2}: {3}", "--reverse", "--height", "100%"]}))<CR>
+nmap <silent><Leader>gg :GlobalFZF <C-R><C-W><CR>
+" file

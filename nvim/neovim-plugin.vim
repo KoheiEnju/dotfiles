@@ -31,8 +31,8 @@ Plug 'simeji/winresizer'
 Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}
 " Fern
 Plug 'lambdalisue/fern.vim'
-Plug 'lambdalisue/fern-git-status.vim'
-Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+" Plug 'lambdalisue/fern-git-status.vim'
+" Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/fern-hijack.vim'
 " LSP
 Plug 'neovim/nvim-lspconfig'
